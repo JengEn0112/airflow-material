@@ -142,3 +142,5 @@ airflow list_tasks example_python_operator
 
 airflow test example_python_operator print_the_context 2018-05-07
 * Allow to test a task (print_the_context) from a given dag (example_python_operator here) without taking care of dependencies and past runs. Useful for debugging.
+
+airflow dags backfill -s 2022-01-01 -e 2022-01-12 --reset-dagruns
