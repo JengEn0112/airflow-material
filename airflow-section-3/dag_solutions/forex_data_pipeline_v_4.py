@@ -27,7 +27,7 @@ def download_rates():
         for row in reader:
             base = row['base']
             with_pairs = row['with_pairs'].split(' ')
-            indata = requests.get('https://api.exchangeratesapi.io/latest?base=' + base).json()
+            indata = requests.get(f'https://api.exchangeratesapi.io/latest?base={base}').json()
             outdata = {'base': base, 'rates': {}, 'last_update': indata['date']}
             for pair in with_pairs:
                 outdata['rates'][pair] = indata['rates'][pair]
