@@ -5,7 +5,11 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 
 default_args = {
-    'start_date': datetime(2019, 1, 1)
+    'start_date': datetime(2019, 1, 1),
+    'email': "owner@test.com",
+    'retries': 3,
+    'retry_delay': timedelta(minutes=5),
+    'catchup': False
 }
 
 def process():

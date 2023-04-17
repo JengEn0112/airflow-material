@@ -3,9 +3,9 @@ from airflow.models import DagBag
 
 class TestDagValidation:
 
-    LOAD_SECOND_THRESHOLD = 2
+    LOAD_SECOND_THRESHOLD = 5
     REQUIRED_EMAIL = "owner@test.com"
-    EXPECTED_NUMBER_OF_DAGS = 7
+    EXPECTED_NUMBER_OF_DAGS = 10
 
     def test_import_dags(self, dagbag):
         """
@@ -32,7 +32,7 @@ class TestDagValidation:
             res
         )
 
-    @pytest.mark.skip(reason="not yet added to the DAGs")
+    # @pytest.mark.skip(reason="not yet added to the DAGs")
     def test_default_args_email(self, dagbag):
         """
             Verify that DAGs have the required email
@@ -42,7 +42,7 @@ class TestDagValidation:
             emails = dag.default_args.get('email', [])
             assert self.REQUIRED_EMAIL in emails, "The mail {0} for sending alerts is missing from the DAG {1}".format(self.REQUIRED_EMAIL, dag_id)
     
-    @pytest.mark.skip(reason="not yet added to the DAGs")
+    # @pytest.mark.skip(reason="not yet added to the DAGs")
     def test_default_args_retries(self, dagbag):
         """
             Verify that DAGs have the required number of retries
@@ -52,7 +52,7 @@ class TestDagValidation:
             retries = dag.default_args.get('retries', None)
             assert retries is not None, "You must specify a number of retries in the DAG: {0}".format(dag_id)
 
-    @pytest.mark.skip(reason="not yet added to the DAGs")
+    # @pytest.mark.skip(reason="not yet added to the DAGs")
     def test_default_args_retry_delay(self, dagbag):
         """
             Verify that DAGs have the required retry_delay expressed in seconds

@@ -9,7 +9,10 @@ local_tz = pendulum.timezone("Europe/Paris")
 
 default_args = {
     'start_date': datetime(2019, 3, 29, 1),
-    'owner': 'Airflow'
+    'owner': 'Airflow',
+    'email': "owner@test.com",
+    'retries': 3,
+    'retry_delay': timedelta(minutes=5)
 }
 
 with DAG(dag_id='tz_dag', schedule_interval="0 1 * * *", default_args=default_args) as dag:

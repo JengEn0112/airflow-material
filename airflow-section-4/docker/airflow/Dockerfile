@@ -54,7 +54,8 @@ RUN set -ex \
     && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
     && useradd -ms /bin/bash -d ${AIRFLOW_USER_HOME} airflow \
     && pip install --upgrade "pip==20.2.4" \
-    && pip install -U pip setuptools wheel \
+    && pip install setuptools==49.6.0 \
+    && pip install -U pip wheel \
     && pip install pytest \
     && pip install pytz \
     && pip install pyOpenSSL \
